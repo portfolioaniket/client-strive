@@ -1,0 +1,7 @@
+.link-active{
+    border-bottom: solid 2px;
+    font-weight: bold;
+}
+.custom-link{
+    cursor: pointer;
+}

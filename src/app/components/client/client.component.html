@@ -1,0 +1,47 @@
+@if(isLoading){
+<div class="position-fixed start-50 top-50 spinner-border text-primary">
+    <span class="loader-text">Loading...</span>
+</div>
+}
+@else {
+<div class="row m-0">
+    <div class="card px-0">
+        <div class="card-header bg-light text-muted text-center custom-bg d-flex justify-content-between gap-3 align-items-center">
+            <h5 class="mb-0 py-2 fw-bold fs-3">{{tableConst.HEADER}}</h5>
+            <button class="btn btn-secondary" (click)="navigateToAddClient()">{{tableConst.BUTTONS.ADD}}</button>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>{{tableConst.COLUMNS.SR_NO}}</th>
+                        <th>{{tableConst.COLUMNS.PERSON_NAME}}</th>
+                        <th>{{tableConst.COLUMNS.COMPANY_NAME}} </th>
+                        <th>{{tableConst.COLUMNS.CITY}}</th>
+                        <th>{{tableConst.COLUMNS.EMP_STN}} </th>
+                        <th>{{tableConst.COLUMNS.CONTACT}} </th>
+                        <th>{{tableConst.COLUMNS.ACTION}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of clientList; track $index) {
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{item.contactPersonName}}</td>
+                        <td>{{item.companyName}}</td>
+                        <td>{{item.city}}</td>
+                        <td>{{item.employeeStrength}}</td>
+                        <td>{{item.contactNo}}</td>
+                        <td class="d-flex gap-3">
+                            <button class="btn edit btn-secondary custom-btn" (click)="navigateToEditClient(item.clientId)">{{tableConst.BUTTONS.EDIT}}</button>
+                            <button class="btn text-muted custom-btn">{{tableConst.BUTTONS.DELETE}}</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+}

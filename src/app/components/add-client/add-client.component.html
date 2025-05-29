@@ -1,0 +1,152 @@
+@if(isLoading){
+<div class="position-fixed start-50 top-50 spinner-border text-primary"><span class="text-success">Loading...</span></div>
+}
+@else{
+@if(showForm){
+    <div class="row m-0">
+    <div class="card p-0">
+        <div class="card-header text-center">
+            <h5 class="mb-0 py-2 fs-3 text-muted">
+                {{clientConst.HEADER}}
+            </h5>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="clientForm">
+                <div class="row">
+                <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="contactPersonName">{{clientConst.LABELS.PERSON_NAME}} <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="contactPersonName" id="contactPersonName" class="form-control p-2">
+                    <div class="text-danger" *ngIf="showError">
+                        @if(Form['contactPersonName']?.errors?.['required']){
+                            <span>This field is required</span>
+                        }
+                         @if(Form['contactPersonName']?.errors?.['minlength']){
+                            <span>Name is very short</span>
+                        }
+                </div>
+                </div>
+                <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="companyName">{{clientConst.LABELS.COMPANY_NAME}} <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="companyName" id="companyName" class="form-control p-2">
+                    <div class="text-danger" *ngIf="showError">
+                        @if(Form['companyName']?.errors?.['required']){
+                            <span>This field is required</span>
+                        }
+                         @if(Form['companyName']?.errors?.['minlength']){
+                            <span>Company Name is very short</span>
+                        }
+                        
+                    </div>
+                </div>
+                <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="city">{{clientConst.LABELS.CITY}}</label>
+                    <input type="text" formControlName="city" id="city" class="form-control p-2">
+                     <div class="text-danger" *ngIf="showError">
+                         @if(Form['city']?.errors?.['minlength']){
+                            <span>City is very short</span>
+                        }
+                        
+                    </div>
+                </div>
+                <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="state">{{clientConst.LABELS.STATE}} </label>
+                    <input type="text" formControlName="state" id="state" class="form-control p-2">
+                    <div class="text-danger" *ngIf="showError">
+                         @if(Form['state']?.errors?.['minlength']){
+                            <span>State is very short</span>
+                        }
+                        
+                    </div>
+                </div>
+                <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="pincode">{{clientConst.LABELS.PIN_CODE}} </label>
+                    <input type="text" formControlName="pincode" id="pincode" class="form-control p-2">
+                    <div class="text-danger" *ngIf="showError">
+                         @if(Form['pincode']?.errors?.['pattern']){
+                            <span>Please enter a valid Pin Code</span>
+                        }
+                        
+                    </div>
+                </div>
+                <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="address">{{clientConst.LABELS.ADDRESS}}</label>
+                    <input type="text" formControlName="address" id="address" class="form-control p-2">
+                    <div class="text-danger" *ngIf="showError">
+                         @if(Form['address']?.errors?.['minlength']){
+                            <span>Enter a longer Address</span>
+                        }
+                        
+                    </div>
+                </div>
+                   <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="contactNo">{{clientConst.LABELS.CONTACT_NO}} <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="contactNo" id="contactNo" class="form-control p-2">
+                    <div class="text-danger" *ngIf="showError">
+                        @if(Form['contactNo']?.errors?.['required']){
+                            <span>This field is required</span>
+                        }
+                         @if(Form['contactNo']?.errors?.['pattern']){
+                            <span>Enter a valid Contact Number</span>
+                        }
+                        
+                    </div>
+                </div>
+                <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="EmployeeStrength">{{clientConst.LABELS.EMPLOYEE_STRENGTH}}</label>
+                    <input type="text" [formControlName]="Form['clientId'].value==0?'EmployeeStrength':'employeeStrength'" id="EmployeeStrength" class="form-control p-2">
+                    <div class="text-danger" *ngIf="showError">
+                         @if(Form['EmployeeStrength']?.errors?.['pattern']){
+                            <span>Please enter a number</span>
+                        }
+                        
+                    </div>
+                </div>
+                <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="gstNo">{{clientConst.LABELS.GST_NO}} <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="gstNo" id="gstNo" class="form-control p-2">
+                    <div class="text-danger" *ngIf="showError">
+                        @if(Form['gstNo']?.errors?.['required']){
+                            <span>This field is required</span>
+                        }
+                        @if(Form['gstNo']?.errors?.['pattern']){
+                            <span>Please enter a number</span>
+                        }
+                        
+                    </div>
+                </div>
+                <div class="col-6 my-2">
+                    <label class="text-muted form-label lead my-1" for="regNo">{{clientConst.LABELS.REG_NO}} <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="regNo" id="regNo" class="form-control p-2">
+                    <div class="text-danger" *ngIf="showError">
+                        @if(Form['regNo']?.errors?.['required']){
+                            <span>This field is required</span>
+                        }
+                         @if(Form['regNo']?.errors?.['pattern']){
+                            <span>Please enter a number</span>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="card-footer  d-flex gap-4">
+            <button class="btn submit btn-secondary" (click)="onSubmit()">{{clientConst.BUTTONS.SUBMIT}}</button>
+            <button class="btn custom-btn" (click)="navigateToClient()">{{clientConst.BUTTONS.CANCEL}}</button>
+        </div>
+    </div>
+</div>
+}
+@else {
+    <div class="position-fixed start-50 top-50 spinner-border text-danger"><span class="text-primary">NA</span></div>
+    <div class="d-flex shadow p-5 justify-content-center">
+    <h5> USER NOT FOUND</h5>
+ 
+</div>
+}
+}
+
+
+
+
+

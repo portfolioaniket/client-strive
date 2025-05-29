@@ -1,0 +1,14 @@
+.custom-bg{
+    background-color: lightgray !important;
+    border-bottom: none;
+}
+.loader-text{
+    font-size: 12px;
+}
+.custom-btn{
+    border-radius: 0;
+    border: solid 1px lightgray;
+}
+.edit{
+    border: none;
+}
